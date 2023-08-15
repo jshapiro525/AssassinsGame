@@ -1,0 +1,57 @@
+Traceback (most recent call last):
+  File "C:\Users\jshap\anaconda3\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\jshap\anaconda3\Lib\site-packages\nbclient\client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jshap\anaconda3\Lib\site-packages\nbclient\util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jshap\anaconda3\Lib\site-packages\nbclient\util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jshap\anaconda3\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\jshap\anaconda3\Lib\site-packages\nbclient\client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\jshap\anaconda3\Lib\site-packages\nbclient\client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\jshap\anaconda3\Lib\site-packages\nbclient\client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+user = readline();
+while !(user in names)
+    println("Sorry, ", user," is not in the database. Please enter a name from the list above.")
+    user = readline()
+end
+
+i=1;
+while isequal(neworder[i],user) == false
+    i = i+1;
+end
+if i == 16
+    println(user,", your target is ", neworder[1], ".")
+else
+    println(user,", your target is ", neworder[i+1], ".")
+end
+------------------
+
+IJulia: this front-end does not implement stdin
+
+Stacktrace:
+ [1] error(s::String)
+   @ Base .\error.jl:35
+ [2] readprompt(prompt::String; password::Bool)
+   @ IJulia C:\Users\jshap\.julia\packages\IJulia\Vo51o\src\stdio.jl:196
+ [3] readprompt
+   @ C:\Users\jshap\.julia\packages\IJulia\Vo51o\src\stdio.jl:194 [inlined]
+ [4] readline(io::IJulia.IJuliaStdio{Base.PipeEndpoint})
+   @ IJulia C:\Users\jshap\.julia\packages\IJulia\Vo51o\src\stdio.jl:237
+ [5] readline()
+   @ Base .\io.jl:547
+ [6] top-level scope
+   @ In[2]:1
+LoadError: IJulia: this front-end does not implement stdin
+
